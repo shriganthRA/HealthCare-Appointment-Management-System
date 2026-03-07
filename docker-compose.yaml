@@ -1,0 +1,56 @@
+# version: '3.8'
+
+services:
+  auth-db:
+    image: postgres:17
+    container_name: auth-service-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: authdb
+    ports:
+      - 5433:5432
+    volumes:
+      - auth-db-data:/var/lib/postgresql/data
+
+  patient-db:
+    image: postgres:17
+    container_name: patient-service-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: patientdb
+    ports:
+      - 5434:5432
+    volumes:
+      - patient-db-data:/var/lib/postgresql/data
+
+  doctor-db:
+    image: postgres:17
+    container_name: doctor-service-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: doctordb
+    ports:
+      - "5435:5432"
+    volumes:
+      - doctor-db-data:/var/lib/postgresql/data
+
+  appointment-db:
+    image: postgres:17
+    container_name: appointment-service-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: appointmentdb
+    ports:
+      - 5436:5432
+    volumes:
+      - appointment-db-data:/var/lib/postgresql/data
+
+volumes:
+  auth-db-data:
+  patient-db-data:
+  appointment-db-data:
+  doctor-db-data:
