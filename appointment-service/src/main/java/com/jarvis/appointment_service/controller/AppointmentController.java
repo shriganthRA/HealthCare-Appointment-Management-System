@@ -16,7 +16,7 @@ import com.jarvis.appointment_service.repository.AppointmentRepo;
 import com.jarvis.appointment_service.service.AppointmentService;
 
 @RestController
-@RequestMapping("/api/appointments")
+@RequestMapping("/appointment")
 public class AppointmentController {
 
     private final AppointmentService appointmentService;
@@ -27,7 +27,7 @@ public class AppointmentController {
 
     // Create an Appointment
     @PostMapping
-    public ResponseEntity<AppointmentResponseDTO> createAppointment(@RequestBody AppointmentRequestDTO appointmentRequestDTO) {
+    public ResponseEntity<AppointmentResponseDTO> book(@RequestBody AppointmentRequestDTO appointmentRequestDTO) {
         return ResponseEntity.status(201).body(appointmentService.createAppointment(appointmentRequestDTO));
     }
 

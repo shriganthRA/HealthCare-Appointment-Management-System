@@ -1,6 +1,8 @@
 package com.jarvis.doctor_service.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,10 @@ public class DoctorService {
     // Get all Doctors
     public List<DoctorResponseDTO> getAllDoctors() {
         return doctorRepo.findAll().stream().map(d -> DoctorMapper.toDTO(d)).toList();
+    }
+
+    // Get Doctor by ID
+    public Optional<DoctorResponseDTO> getDoctor(UUID id) {
+        return doctorRepo.findById(id).map(d -> DoctorMapper.toDTO(d));
     }
 }
